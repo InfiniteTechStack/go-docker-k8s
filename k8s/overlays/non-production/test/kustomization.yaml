@@ -1,0 +1,16 @@
+
+resources:
+- ../../../base/apps
+
+
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+images:
+- name: hello-api
+  newName: devops022/hello-api
+  newTag: 221fbf9
+
+replicas:
+- count: 2
+  name: hello-api

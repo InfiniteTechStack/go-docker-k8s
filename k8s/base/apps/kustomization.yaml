@@ -1,0 +1,8 @@
+namespace: apps
+
+resources:
+  - hello-api
+
+replicas:
+  - count: 0
+    name: hello-api
