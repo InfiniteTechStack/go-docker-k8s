@@ -54,17 +54,17 @@ ENTRYPOINT ["/app/app"]
 ## build the application
 docker buildx build \
     --platform linux/amd64,linux/arm64 \
-    -t devops022/hello-api:221fbf9 \
+    -t <docker-hub-user-name>/hello-api:221fbf9 \
     ./hello-api
 
 ## docker login with token
-docker login -u devops022
+docker login -u <docker-hub-user-name>
 
 ## push the image
-docker push devops022/hello-api:221fbf9
+docker push <docker-hub-user-name>/hello-api:221fbf9
 
 ## Test Locally:
-docker run -itd --name hello-api -p 8080:8080 --platform linux/amd64 devops022/hello-api:221fbf9
+docker run -itd --name hello-api -p 8080:8080 --platform linux/amd64 <docker-hub-user-name>/hello-api:221fbf9
 curl -G 'http://localhost:8080?name=DevOps'
 ```
 
@@ -114,7 +114,7 @@ export DOCKERHUB_PAT=<pat-token>
 kubectl create ns apps
 kubectl create secret -n apps docker-registry image-pull-secret \
   --docker-server=https://index.docker.io/v1/ \
-  --docker-username=devops022 \
+  --docker-username=<docker-hub-user-name> \
   --docker-password=$DOCKERHUB_PAT
 ```
 
